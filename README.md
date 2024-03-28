@@ -10,3 +10,6 @@ to get new Z and X images and replace the regions on the "image_location" variab
 The hotslotTraining is an even simpler script that presses 1-0 and TAB, tab for me is hotslot swap, again, if you want to swap that just open the python file
 and replace the last line of the main loop "keyboard.press_and_release('tab')", heads-up, just replacing the key in the python file WILL NOT swap it in the .exe 
 file for that you'll have to run pyinstaller on the hotslotTraining.py file.
+
+The scripts work best together, the hotslot script attempts to hold Z down for chakra restore but some jutsus cancel that, if an outside source presses Z the script
+will reset the Z flag and hold down Z again, hence why having the generative scroll on helps.

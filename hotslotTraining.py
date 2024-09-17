@@ -2,7 +2,17 @@ import keyboard
 import time
 import pyautogui
 
+keyboard_hook = False
 z_pressed = False
+
+def start_keyboard(input_text):
+    try: 
+        if(input_text == "start"):
+            print(f"Starting keyboard hook")
+        elif(input_text == "stop"):
+            print(f"Stopping keyboard hook")
+    except Exception as e:
+        print(f"Word not found, type either start or stop (case-sensitive)")
 
 def find_image(image_path):
     try:
@@ -65,16 +75,17 @@ def start_stop_loop(e):
     #   zx_loop_active = not zx_loop_active
         
 # Register the callback for the key press
-keyboard.hook(start_stop_loop)
 
 try:
-    while True:
-        if main_loop_active:
-            main_loop()
-        if secondary_loop_active:
-            secondary_loop()
-        # if zx_loop_active:
-        #     zx_loop()
+    while(keyboard_hook):
+        keyboard.hook(start_stop_loop)
+        while True:
+            if main_loop_active:
+                main_loop()
+            if secondary_loop_active:
+                secondary_loop()
+            # if zx_loop_active:
+            #     zx_loop()
 except KeyboardInterrupt:
     pass
 finally:
